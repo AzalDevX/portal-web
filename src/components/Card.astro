@@ -1,23 +1,54 @@
 ---
-export interface Props {
-  title: string;
-  body: string;
-  href: string;
+import { parse } from 'node:url';
+interface Props {
+  name: string;
+  url: string;
+  tags: string[];
+  bgColor: string;
 }
 
-const { href, title, body } = Astro.props;
+const { name, url, tags, bgColor } = Astro.props;
+const { hostname } = parse(url);
+const faviconUrl = `https://www.google.com/s2/favicons?domain=${hostname}&sz=32`;
 ---
 
-<li class="group bg-card p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 list-none relative overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-r from-accent-primary to-accent-secondary opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-  <a href={href} class="no-underline block relative z-10">
-    <h2 class="text-accent-primary text-xl font-bold mb-2 group-hover:translate-x-1 transition-transform duration-300">
-      {title}
-      <span class="inline-block transition-transform duration-300 group-hover:translate-x-1 ml-1">&rarr;</span>
-    </h2>
-    <p class="text-text-secondary mt-2 text-base leading-relaxed group-hover:text-text-primary transition-colors duration-300">
-      {body}
-    </p>
-  </a>
-  <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-accent-primary to-accent-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-</li>
+<a href={url} target="_blank" rel="noopener noreferrer" class={`resource-card group block p-6 rounded-xl shadow-lg ${bgColor} transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:rotate-1`}>
+  <div class="overflow-hidden">
+    <div class="flex items-center mb-2">
+      <img src={faviconUrl} alt={`${name} favicon`} class="w-6 h-6 mr-2" />
+      <h2 class="text-2xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">{name}</h2>
+    </div>
+    <p class="text-blue-600 mb-4 truncate group-hover:underline">{url}</p>
+    <div class="flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span class="px-2 py-1 bg-white bg-opacity-30 rounded-full text-sm text-gray-700 transition-all duration-300 group-hover:bg-opacity-50 group-hover:text-gray-900">
+          {tag}
+        </span>
+      ))}
+    </div>
+  </div>
+</a>
+
+<style>
+  a {
+    position: relative;
+    overflow: hidden;
+  }
+
+  a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.5));
+    transform: translateY(100%);
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    pointer-events: none;
+  }
+
+  a:hover::before {
+    transform: translateY(0);
+  }
+</style>

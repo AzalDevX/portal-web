@@ -1,41 +1,70 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import SearchBar from '../components/SearchBar.astro';
+import '@fontsource/lexend';
+import resources from '../data/resources';
+
+// const resources = [
+//   {
+//     "name": "ChatGPT",
+//     "url": "https://chat.openai.com/",
+//     "tags": ["IA", "Asistente", "OpenAI"]
+//   },
+//   {
+//     "name": "GitHub",
+//     "url": "https://github.com/",
+//     "tags": ["repositorios", "código", "open source"]
+//   },
+//   {
+//     "name": "Stack Overflow",
+//     "url": "https://stackoverflow.com/",
+//     "tags": ["programación", "comunidad", "preguntas"]
+//   }
+// ];
+
+const bgColors = [
+  'bg-purple-200',
+  'bg-yellow-200',
+  'bg-green-200',
+  'bg-red-200',
+  'bg-blue-200',
+];
 ---
 
-<Layout title="Astro + TailwindCSS Template">
-  <main class="max-w-4xl mx-auto p-6 pt-16">
-    <h1 class="text-text-primary text-5xl font-extrabold text-center mb-8">Bienvenido a <strong class="text-purple-300">Astro</strong> + <strong class="text-teal-300">TailwindCSS</strong></h1>
-    <p class="text-center text-xl mb-12">
-      ¡Empieza con <code class="bg-code-background border-1 border-code-border px-2 py-1 rounded-md">src/pages</code> para codear!<br />
-      <strong class="text-accent-primary">Objetivo:</strong> Facilitar la creación de proyectos combinados con ambas tecnologías.
-    </p>
-    <ul role="list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <Card
-        href="https://astro.build/"
-        title="Inicia tu Proyecto"
-        body="Comienza a desarrollar tu idea usando este template como base. ¡Explora las posibilidades!"
-      />
-      <Card
-        href="https://docs.astro.build/en/getting-started/"
-        title="Documentación"
-        body="Aprende a integrar nuevas funcionalidades, y consulta las guías para personalizar el template."
-      />
-      <Card
-        href="https://tailwindcss.com/docs/guides/astro"
-        title="Aprende Astro y TailwindCSS"
-        body="Descubre cómo aprovechar al máximo Astro y TailwindCSS en tus proyectos."
-      />
-      <Card
-        href="https://github.com/azaldevx/astro-template"
-        title="Contribuir al Proyecto"
-        body="¿Tienes ideas o mejoras? Colabora en el desarrollo de este template en GitHub."
-      />
-    </ul>
+<Layout title="Directorio de Recursos">
+  <main class="mx-auto px-4 py-8 min-h-screen bg-gradient-to-br from-purple-100 to-green-100">
+    <h1 class="text-4xl font-bold mb-8 text-center text-gray-800 animate-fade-in">Directorio de Recursos</h1>
+    <SearchBar />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {resources.map((item, index) => (
+        <div class="animate-fade-in" style={`animation-delay: ${index * 100}ms`}>
+          <Card
+            name={item.name}
+            url={item.url}
+            tags={item.tags}
+            bgColor={bgColors[index % bgColors.length]}
+          />
+        </div>
+      ))}
+    </div>
   </main>
-
-  <footer class="mt-12 text-center text-footer">
-    <p>Creado por <a href="https://www.linkedin.com/in/azaldev" class="text-accent-primary hover:underline">AzalDevX</a> - 
-    <a href="https://github.com/azaldevx/astro-template" class="text-accent-primary hover:underline">GitHub</a></p>
-  </footer>
 </Layout>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+  }
+</style>
+
+<style is:global>
+  body {
+    font-family: 'Lexend', sans-serif;
+  }
+</style>

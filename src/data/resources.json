@@ -1,0 +1,37 @@
+[
+  {
+    "name": "ChatGPT",
+    "url": "https://chat.openai.com/",
+    "tags": ["IA", "Asistente", "OpenAI"]
+  },
+  {
+    "name": "Tailwind CSS",
+    "url": "https://tailwindcss.com/",
+    "tags": ["CSS", "framework", "estilos", "frontend"]
+  },
+  {
+    "name": "YouTube",
+    "url": "https://www.youtube.com/",
+    "tags": ["videos", "multimedia", "plataforma"]
+  },
+  {
+    "name": "Fondos Tailwind",
+    "url": "https://bg.ibelick.com/",
+    "tags": ["fondos", "Tailwind", "CSS", "diseño"]
+  },
+  {
+    "name": "Quitar Fondo",
+    "url": "https://www.remove.bg/es",
+    "tags": ["herramientas", "imágenes", "edición"]
+  },
+  {
+    "name": "Portafolio",
+    "url": "https://azaldev.com/",
+    "tags": ["personal", "portafolio", "AzalDevX", "desarrollador"]
+  },
+  {
+    "name": "GitHub Personal",
+    "url": "https://github.com/AzalDevX",
+    "tags": ["repositorio", "programación", "AzalDevX"]
+  }
+]

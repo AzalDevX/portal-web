@@ -1,30 +1,29 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
 	  extend: {
 		colors: {
-		  background: '#1c1917',
-		  card: '#292524',
-		  text: {
-			primary: '#e7e5e4',
-			secondary: '#d6d3d1',
-		  },
-		  accent: {
-			primary: '#fb923c',
-			secondary: '#fdba74',
-		  },
 		  purple: {
-			300: '#d8b4fe',  // Asumiendo un tono similar al texto "Astro"
+			100: '#F3E8FF',
+			200: '#E9D5FF',
 		  },
-		  teal: {
-			300: '#5eead4',  // Asumiendo un tono similar al texto "TailwindCSS"
+		  yellow: {
+			200: '#FEF3C7',
 		  },
-		  code: {
-			background: '#332e2a',
-			border: '#2b2623',
+		  green: {
+			100: '#DCFCE7',
+			200: '#A7F3D0',
 		  },
-		  footer: '#4b5563',  // Equivalente a text-gray-600
+		  red: {
+			200: '#FECDD3',
+		  },
+		  blue: {
+			200: '#BFDBFE',
+		  },
+		},
+		animation: {
+		  'bounce-slow': 'bounce 3s infinite',
 		},
 	  },
 	},
