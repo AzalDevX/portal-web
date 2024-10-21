@@ -4,38 +4,48 @@ interface Props {
   name: string;
   url: string;
   tags: string[];
-  bgColor: string;
 }
 
-const { name, url, tags, bgColor } = Astro.props;
+const { name, url, tags } = Astro.props;
 const { hostname } = parse(url);
-const faviconUrl = `https://www.google.com/s2/favicons?domain=${hostname}&sz=32`;
+const faviconUrl = `https://www.google.com/s2/favicons?domain=${hostname}&sz=128`;
+const defaultImageUrl = "/logo.png";
 ---
 
-<a href={url} target="_blank" rel="noopener noreferrer" class={`resource-card group block p-6 rounded-xl shadow-lg ${bgColor} transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:rotate-1`}>
-  <div class="overflow-hidden">
+<a href={url} target="_blank" rel="noopener noreferrer" class="resource-card group block p-6 bg-white rounded-xl border border-gray-200 shadow-sm transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg hover:rotate-1 relative overflow-hidden">
+  <div class="overflow-hidden relative z-10">
     <div class="flex items-center mb-2">
-      <img src={faviconUrl} alt={`${name} favicon`} class="w-6 h-6 mr-2" />
       <h2 class="text-2xl font-bold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">{name}</h2>
     </div>
     <p class="text-blue-600 mb-4 truncate group-hover:underline">{url}</p>
     <div class="flex flex-wrap gap-2">
       {tags.map((tag) => (
-        <span class="px-2 py-1 bg-white bg-opacity-30 rounded-full text-sm text-gray-700 transition-all duration-300 group-hover:bg-opacity-50 group-hover:text-gray-900">
+        <span class="px-2 py-1 bg-gray-100 rounded-full text-sm text-gray-700 transition-all duration-300 group-hover:bg-gray-200 group-hover:text-gray-900">
           {tag}
         </span>
       ))}
     </div>
   </div>
+  <div class="absolute -right-8 -top-8 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+    <img 
+      src={faviconUrl} 
+      alt={`${name} favicon`} 
+      class="w-full h-full object-contain rounded-xl" 
+      onError={(e) => {
+        e.currentTarget.onerror = null; 
+        e.currentTarget.src = defaultImageUrl;
+      }}
+    />
+  </div>
 </a>
 
 <style>
-  a {
+  .resource-card {
     position: relative;
     overflow: hidden;
   }
 
-  a::before {
+  .resource-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -48,7 +58,20 @@ const faviconUrl = `https://www.google.com/s2/favicons?domain=${hostname}&sz=32`
     pointer-events: none;
   }
 
-  a:hover::before {
+  .resource-card:hover::before {
     transform: translateY(0);
   }
 </style>
+
+<script>
+  // Este script se ejecutará en el cliente para manejar errores de carga de imagen
+  document.addEventListener('astro:page-load', () => {
+    const images = document.querySelectorAll('.resource-card img');
+    images.forEach(img => {
+      img.onerror = function() {
+        this.onerror = null;
+        this.src = '/path/to/default-image.png'; // Asegúrate de reemplazar esto con la ruta a tu imagen por defecto
+      };
+    });
+  });
+</script>
