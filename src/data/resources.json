@@ -1,5 +1,44 @@
 [
   {
+    "name": "a0",
+    "url": "https://a0.azaldev.com",
+    "tags": ["subdominio", "proyecto", "a0"]
+  },
+  {
+    "name": "aidify",
+    "url": "https://aidify.azaldev.com",
+    "tags": ["subdominio", "proyecto", "aidify"]
+  },
+  {
+    "name": "astro-template",
+    "url": "https://astro-template.azaldev.com",
+    "tags": ["subdominio", "proyecto", "astro"]
+  },
+  {
+    "name": "docs",
+    "url": "https://docs.azaldev.com",
+    "tags": ["subdominio", "documentación"]
+  },
+  {
+    "name": "mom",
+    "url": "https://mom.azaldev.com",
+    "tags": ["subdominio", "proyecto", "mayor o menor"]
+  },
+  {
+    "name": "portal",
+    "url": "https://portal.azaldev.com",
+    "tags": ["subdominio", "proyecto", "portal"]
+  },
+  {
+    "name": "quotes",
+    "url": "https://quotes.azaldev.com",
+    "tags": ["subdominio", "proyecto", "citas"]
+  },
+  {
+    "name": "random",
+    "url": "https://random.azaldev.com",
+    "tags": ["subdominio", "proyecto", "aleatorio"]
+  },{
     "name": "ChatGPT",
     "url": "https://chat.openai.com/",
     "tags": ["IA", "Asistente", "OpenAI"]
@@ -33,5 +72,10 @@
     "name": "GitHub Personal",
     "url": "https://github.com/AzalDevX",
     "tags": ["repositorio", "programación", "AzalDevX"]
+  },
+  {
+    "name": "MagicUI",
+    "url": "https://magicui.design/",
+    "tags": ["diseño", "ui", "frontend"]
   }
 ]
