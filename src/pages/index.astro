@@ -4,37 +4,14 @@ import Card from '../components/Card.astro';
 import SearchBar from '../components/SearchBar.astro';
 import '@fontsource/lexend';
 import resources from '../data/resources';
-
-// const resources = [
-//   {
-//     "name": "ChatGPT",
-//     "url": "https://chat.openai.com/",
-//     "tags": ["IA", "Asistente", "OpenAI"]
-//   },
-//   {
-//     "name": "GitHub",
-//     "url": "https://github.com/",
-//     "tags": ["repositorios", "código", "open source"]
-//   },
-//   {
-//     "name": "Stack Overflow",
-//     "url": "https://stackoverflow.com/",
-//     "tags": ["programación", "comunidad", "preguntas"]
-//   }
-// ];
-
-const bgColors = [
-  'bg-purple-200',
-  'bg-yellow-200',
-  'bg-green-200',
-  'bg-red-200',
-  'bg-blue-200',
-];
 ---
 
-<Layout title="Directorio de Recursos">
+<Layout title="Wink">
   <main class="mx-auto px-4 py-8 min-h-screen bg-gradient-to-br from-purple-100 to-green-100">
-    <h1 class="text-4xl font-bold mb-8 text-center text-gray-800 animate-fade-in">Directorio de Recursos</h1>
+    <div class="flex justify-center items-center w-full mb-8"> 
+      <img src="/logo.png" alt="Wink" class="w-24 animate-fade-in">
+      <h1 class="text-4xl font-bold text-center text-gray-800 animate-fade-in">Búsqueda de Wink</h1>
+    </div>
     <SearchBar />
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {resources.map((item, index) => (
